@@ -2,4 +2,4 @@
 ```
 npm install
 ```
-Consumiendo API de TMDB
+Consumiendo API de TMDB, actualmente en desarrollo 🚀.
