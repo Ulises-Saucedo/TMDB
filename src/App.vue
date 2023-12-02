@@ -1,10 +1,6 @@
 <template>
-  <X></X>
+  <router-view></router-view>
 </template>
 
 <script setup>
-  import X from "./components/X.vue"
 </script>
-
-<style scoped>
-</style>
