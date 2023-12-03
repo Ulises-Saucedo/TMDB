@@ -38,10 +38,10 @@
 <script setup>
     import { ref, onMounted } from 'vue'
     import { useRoute } from 'vue-router'
-    import MovieAPI from '../services/movieAPI';
+    import MovieService from '../services/moviesService.js';
 
     const ID = ref('')
-    const Movie = new MovieAPI()
+    const Movie = new MovieService()
     const movie = Movie.getMovie()
 
     onMounted(async() =>{

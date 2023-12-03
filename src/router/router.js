@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import MovieView from '../views/MovieView.vue'
 
 const routes = [
     {
@@ -10,16 +11,7 @@ const routes = [
     {
         path: '/:id',
         name: 'movie',
-        component: () => import(/* webpackChunkName: 'about' */ '../views/MovieView.vue')
-    },
-    {
-        path: '/forbidden',
-        name: 'forbidden',
-        component: () => import(/* webpackChunkName: 'forbidden' */ '../views/ForbiddenView.vue')
-    },
-    { 
-        path: '/:catchAll(.*)', 
-        redirect: '/forbidden' 
+        component: MovieView
     }
 ]
 
