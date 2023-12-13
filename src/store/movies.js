@@ -61,6 +61,15 @@ export const useMovies = defineStore('movies', {
             }catch(e){
                 console.warn(e)
             }
+        },
+        async fetchMovieById(id){
+            try{
+                const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`)
+                const json = await response.json()
+                this.movie = json
+            }catch(e){
+                console.warn(e)
+            }
         }
     }
 })

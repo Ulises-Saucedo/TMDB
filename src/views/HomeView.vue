@@ -13,6 +13,7 @@
     const storeMovies = useMovies()
 
     const searchMovie = (query) =>{
+        storeMovies.resetPage()
         storeMovies.fetchMovieByQuery(query)
     }
 </script>

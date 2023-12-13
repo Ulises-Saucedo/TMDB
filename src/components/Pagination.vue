@@ -1,7 +1,18 @@
 <template>
-    <button @click="controlAddPage">{{ data.currentPage + 1 }}</button>
-    <button @click="controlSubtractPage"> {{ data.currentPage - 1 }}</button>
-    <button @click="controlResetPage">Reset</button>
+    <div class="container p-3">
+        <div class="row d-flex justify-content-between">
+            <div class="col">
+                <button @click="controlResetPage" class="btn btn-dark">1</button>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <button @click="controlSubtractPage" :disabled="data.currentPage === 1" class="btn btn-dark">
+                    <span v-if="data.currentPage === 1"> 1 </span>
+                    <span v-else>{{ data.currentPage - 1 }}</span>
+                </button>
+                <button @click="controlAddPage" :disabled="data.currentPage >= data.totalPages" class="mx-2 btn btn-dark">{{ data.currentPage + 1 }}</button>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup>
