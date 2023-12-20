@@ -1,33 +1,46 @@
 <template>
-    <div class="container p-3">
-        <div class="row d-flex justify-content-between">
-            <div class="col">
-                <button @click="controlResetPage" class="btn btn-dark">1</button>
-            </div>
-            <div class="col d-flex justify-content-end">
-                <button @click="controlSubtractPage" :disabled="data.currentPage === 1" class="btn btn-dark">
-                    <span v-if="data.currentPage === 1"> 1 </span>
-                    <span v-else>{{ data.currentPage - 1 }}</span>
-                </button>
-                <button @click="controlAddPage" :disabled="data.currentPage >= data.totalPages" class="mx-2 btn btn-dark">{{ data.currentPage + 1 }}</button>
-            </div>
-        </div>
-    </div>
+    <vue-awesome-paginate
+        :total-items="data.totalItems"
+        :items-per-page="20"
+        :max-pages-shown="5"
+        v-model="data.currentPage"
+        :on-click="onClickHandler"
+    />
 </template>
 
 <script setup>
     import { useMovies } from '../store/movies'
 
     const data = useMovies()
-    const emits = defineEmits(['addPage', 'subtractPage', 'resetPage'])
-    
-    const controlAddPage = () =>{
-        emits('addPage')
-    }
-    const controlSubtractPage = () =>{
-        emits('subtractPage')
-    }
-    const controlResetPage = () =>{
-        emits('resetPage')
+    const emits = defineEmits(['pageChanged'])
+
+    const onClickHandler = (page) => {
+        emits('pageChanged', page)
     }
 </script>
+
+<style>
+    .pagination-container {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        column-gap: 10px;
+    }
+    .paginate-buttons {
+        height: 45px;
+        width: 45px;
+        cursor: pointer;
+        background-color: rgb(242, 242, 242);
+        border-radius: 3px;
+        border: none;
+        color: black;
+    }
+    .paginate-buttons:hover {
+        background-color: #d8d8d8;
+    }
+    .active-page {
+        background-color: #2370AB;
+        border: 1px solid #3498db;
+        color: white;
+    }
+</style>
