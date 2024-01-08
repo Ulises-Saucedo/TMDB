@@ -4,10 +4,8 @@
             <div class="col mb-4" v-for="movie in storeMovies.movies" :key="movie.id">
                 <router-link :to="{name: 'movie', params: {id: movie.id}}">
                     <div class="card mx-auto">
-                        <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`" class="card-img card-img-top img-fluid" alt="Poster">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ movie.title }}</h5>
-                        </div>
+                        <img v-if="movie.poster_path" :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`" class="card-img card-img-top img-fluid" alt="Poster">
+                        <img v-else src="https://static.displate.com/230x320/displate/2022-04-15/7422bfe15b3ea7b5933dffd896e9c7f9_46003a1b7353dc7b5a02949bd074432a.avif" class="card-img">
                     </div>
                 </router-link>
             </div>
@@ -33,7 +31,6 @@
 <style scoped>
     .card{
         width: 200px;
-        height: 400px;
     }
     .card-img{
         width: 100%;
